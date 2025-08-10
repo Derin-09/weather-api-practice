@@ -9,7 +9,8 @@ import Humidity from '@/public/images/humidityicon.png'
 import Forecast from '../../components/Forecast'
 import IconsMaps from '@/components/IconsMaps'
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
+import LoadingSpinner from '@/ui/LoadingSpinner'
 
 type WeatherResponse = {
   location: {
@@ -42,8 +43,12 @@ type WeatherResponse = {
 
 
 const DefaultWeather = () => {
-    const searchParams = useSearchParams()
-    const city = searchParams.get('city') || 'Lagos'
+    // const searchParams = useSearchParams()
+    // const city = searchParams.get('city') || 'Lagos'
+
+    
+    const params = useParams()
+    const city = (params.city as 'city') || 'Lagos'
     const [data, setData] = useState<WeatherResponse | null>(null)
 
      useEffect(() => {
@@ -61,7 +66,7 @@ const DefaultWeather = () => {
     }, [city])
 
     if (!data) {
-        return <p>Loading weather for {city}...</p>
+        return <LoadingSpinner/>
     }
     
     const temp = Math.round(data.current.temp_c)

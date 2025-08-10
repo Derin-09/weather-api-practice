@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -10,8 +11,8 @@ const LoadingSpinner = () => {
         initial={{opacity: 0, scale: 0.9}}
         animate={{opacity: 1, scale: 1.2}}
         transition={{duration: 2000}}>
-            <div>
-                <Image src={Sun} alt='loading' className=''/>
+            <div className=''>
+                <Image src={Sun} width={100} height={100} alt='loading' className=''/>
             </div>
         </motion.div>
     </div>
