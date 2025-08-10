@@ -1,3 +1,4 @@
+'use client'
 import DefaultWeather from '@/app/DefaultWeather/DefaultWeather'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import React from 'react'
