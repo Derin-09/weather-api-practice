@@ -9,9 +9,9 @@ type BarProps = {
 
 const Widebar = (props: BarProps) => {
     return (
-        <div className='px-3 flex justify-between items-center py-6 pr-10 rounded-2xl bg-white/70 text-center'>
+        <div className='px-3 flex justify-between items-center py-6 pr-15 rounded-2xl bg-white/70 text-center'>
             <div className='space-x-1 flex items-center'>
-                <Image src={props.icon} alt='icon' />
+                <Image src={props.icon}  alt='icon' />
                 <p className='text-black '>{props.weather}</p>
             </div>
             <p className='text-black'>{props.detail}</p>

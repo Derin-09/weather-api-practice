@@ -1,7 +1,9 @@
-import Weather from "@/components/Weather";
+import DefaultWeather from "./DefaultWeather/DefaultWeather";
 
 export default function Home() {
   return (
-    <Weather />
+    <main className="md:flex items-center min-h-screen">
+    <DefaultWeather />
+    </main>
   );
 }
