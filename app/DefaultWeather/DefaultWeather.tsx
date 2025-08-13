@@ -77,7 +77,7 @@ const DefaultWeather = () => {
     })
 
     return (
-        <main className='bg-gradient-to-br from-[#FFF0DC] to-[#FEA14E] flex min-h-screen w-screen md:max-w-[400px] h-full select-none text-[#303345]' style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+        <main className='bg-gradient-to-br from-[#FFF0DC] to-[#FEA14E] flex min-h-screen w-screen  md:max-w-[400px] mx-auto h-full select-none text-[#303345]' style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
             <section className='px-8 w-full'>
                 <Navbar />
                 <p className='text-5xl  my-4' >{data?.location.name},<br /> {data?.location.country}</p>
