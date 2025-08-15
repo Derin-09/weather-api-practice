@@ -2,7 +2,6 @@
 import React, { useEffect, useState, use } from 'react'
 import Image from 'next/image'
 import Arrow from '@/public/images/arrow.png'
-import Icon from '@/public/images/sunny.png'
 import Rainfall from '@/public/images/rainicon.png'
 import Wind from '@/public/images/windicon.png'
 import Humidity from '@/public/images/humidityicon.png'
