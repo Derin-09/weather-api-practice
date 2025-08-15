@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Times from "@/ui/Times";
 import Link from 'next/link'
 import { fetchWeather } from '@/utils/fetchWeather';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 type WeatherResponse = {
   current: {
@@ -20,16 +20,14 @@ type WeatherResponse = {
   };
 };
 
-const Forecast = () => {
-  const searchParams = useSearchParams()
-  const city = searchParams.get('city') || 'Lagos'
+const Forecast = ({city}: {city: string}) => {
   const [data, setData] = useState<WeatherResponse | null>(null)
 
   useEffect(() => {
     if (city) {
       ( async () => {
         try {
-        const res = await fetchWeather(city)
+        const res = await fetchWeather(city as string)
         setData(res)
       } catch (error) {
         console.log(error)
@@ -37,7 +35,7 @@ const Forecast = () => {
       })()
       
     }
-  })
+  }, [city])
 
   let temp;
   if (data?.current.temp_c !== undefined) {
@@ -51,7 +49,7 @@ const Forecast = () => {
       <section className='my-5 flex justify-between items-center'>
         <div className='font-bold text-black'>Today</div>
         <div className='text-gray-600 font-bold active:text-black'>
-          <Link href={'/NextDays'}>Next 7 days</Link></div>
+          <Link href={`/${city}/NextDays`}>Next 7 days</Link></div>
       </section>
       <section className='space-x-5 flex overflow-x-auto scrollbar-hide p-0 m-0'>
         <Times time='Now' degree={temp}/>

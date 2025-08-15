@@ -2,7 +2,7 @@ import React from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 type BarProps = {
-    icon: StaticImageData
+    icon: string | StaticImageData
     degree: string
     day: string
 }
@@ -13,7 +13,7 @@ const Days = (props: BarProps) => {
                 <p className=''>{props.day}</p>
                 <div className='space-x-1 flex items-center'>
                     <p className=''>{props.degree}</p>
-                    <Image src={props.icon}  alt='icon' />
+                    <Image src={props.icon} width={30} height={30}  alt='icon' />
                 </div>
             </div>
   )

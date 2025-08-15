@@ -96,7 +96,7 @@ const DefaultWeather = () => {
                     <Widebar icon={Wind} weather='Wind' detail={`${data?.current.wind_kph}km/h`} />
                     <Widebar icon={Humidity} weather='Humidity' detail={`${data?.current.humidity}%`} />
                 </section>
-                <Forecast />
+                <Forecast city={city}/>
             </section>
         </main>
     )
