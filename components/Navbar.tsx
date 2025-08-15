@@ -13,7 +13,7 @@ const Navbar = () => {
     const router = useRouter()
     const handleSearch = () => {
         if (!searcher.trim()) return
-        router.push(`/Weather/${encodeURIComponent(searcher.trim())}`)
+        router.push(`/${encodeURIComponent(searcher.trim())}`)
     }
 
     const handleClick = () => {

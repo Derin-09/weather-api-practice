@@ -28,6 +28,10 @@ type WeatherResponse = {
       hour: {
         time: string;
         temp_c: number;
+        condition: {
+          icon: string
+          text: string
+        }
       }[];
     }[];
   };

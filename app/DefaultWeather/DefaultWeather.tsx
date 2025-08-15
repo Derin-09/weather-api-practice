@@ -7,10 +7,10 @@ import Rainfall from '@/public/images/rainicon.png'
 import Wind from '@/public/images/windicon.png'
 import Humidity from '@/public/images/humidityicon.png'
 import Forecast from '../../components/Forecast'
-import IconsMaps from '@/components/IconsMaps'
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import LoadingSpinner from '@/ui/LoadingSpinner'
+import Image from 'next/image'
 
 type WeatherResponse = {
   location: {
@@ -84,7 +84,8 @@ const DefaultWeather = () => {
                 <p className='text-2xl text-gray-600'>{formattedDate}</p>
                 <div className='flex justify-center gap-4 mt-5 w-full text-center items-center mb-5'>
                     <div >
-                        <IconsMaps/>
+                      <Image src={`https:${data.current.condition.icon}`} width={200} height={200} alt={`${data.current.condition.text}`}/>
+                        {/* <IconsMaps/> */}
                     </div>
                     <div>
                         <p className='text-8xl font-bold '>{temp}<span className='align-super text-lg relative -top-2'>&deg;C</span></p>

@@ -72,15 +72,18 @@ const NextDays = ({ params }: { params: Promise<{ city: string }> }) => {
           </div>
         </section>
         <section className="flex justify-center items-center mb-10">
-          <section className="flex justify-between gap-7 items-center">
+          <section className="flex justify-between gap-10 items-center">
             <div>
               <Image src={Rainfall} width={40} height={40} alt="Rainfall icon" />
+              <p>{data.current.precip_mm}mm</p>
             </div>
             <div>
               <Image src={Wind} width={40} height={40} alt="Wind icon" />
+              <p>{data.current.wind_kph}km/h</p>
             </div>
             <div>
               <Image src={Humidity} width={40} height={40} alt="Humidity icon" />
+              <p>{data.current.humidity}%</p>
             </div>
           </section>
         </section>

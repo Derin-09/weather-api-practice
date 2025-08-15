@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Times from "@/ui/Times";
 import Link from 'next/link'
 import { fetchWeather } from '@/utils/fetchWeather';
-import { useParams } from 'next/navigation';
+import { StaticImageData } from 'next/image';
 
 type WeatherResponse = {
   current: {
     temp_c: number;
+  condition: {
+    text?: string;
+    icon?: string | StaticImageData;
+  };
   };
   forecast: {
     forecastday: {
@@ -15,6 +19,10 @@ type WeatherResponse = {
       hour: {
         time: string;
         temp_c: number;
+        condition: {
+          icon: string 
+          text: string
+        }
       }[];
     }[];
   };
@@ -38,10 +46,20 @@ const Forecast = ({city}: {city: string}) => {
   }, [city])
 
   let temp;
+
   if (data?.current.temp_c !== undefined) {
        temp = Math.round(data?.current.temp_c)
     }
     temp = Math.round(data?.current.temp_c ?? 0)
+    
+  if (data?.current.condition.icon !== undefined) {
+     
+
+    }
+     const timeIcon = data?.current?.condition?.icon ? `${data.current.condition.icon}` : ''
+    const timeText = data?.current?.condition?.text ? data.current.condition.text : ''
+  if (data?.current.condition.text !== undefined) {
+    }
 
   return (
     <main className=''>
@@ -52,7 +70,7 @@ const Forecast = ({city}: {city: string}) => {
           <Link href={`/${city}/NextDays`}>Next 7 days</Link></div>
       </section>
       <section className='space-x-5 flex overflow-x-auto scrollbar-hide p-0 m-0'>
-        <Times time='Now' degree={temp}/>
+        <Times time='Now' degree={temp} icon={timeIcon} text={timeText}/>
         {data?.forecast.forecastday.map((day, index) => {
           const dateStr = day.hour[index].time;
           const formattedDate = new Date(dateStr!).toLocaleTimeString('en-US', {
@@ -65,6 +83,8 @@ const Forecast = ({city}: {city: string}) => {
               key={index}
               time={formattedDate}
               degree={temp}
+              icon={day.hour[index].condition.icon}
+              text={`${day.hour[index].condition.text}`}
             />
           );
         })}
