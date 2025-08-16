@@ -43,8 +43,6 @@ type WeatherResponse = {
 
 
 const DefaultWeather = () => {
-    // const searchParams = useSearchParams()
-    // const city = searchParams.get('city') || 'Lagos'
     
     const params = useParams()
     const city = (params?.city as string) || 'Lagos'

@@ -3,6 +3,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Sun from '@/public/images/sunny.png'
+import { reverse } from 'dns'
 
 const LoadingSpinner = () => {
   return (
@@ -10,7 +11,11 @@ const LoadingSpinner = () => {
         <motion.div
         initial={{opacity: 0, scale: 0.9}}
         animate={{opacity: 1, scale: 1.2}}
-        transition={{duration: 2000}}>
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"}}>
             <div className=''>
                 <Image src={Sun} width={100} height={100} alt='loading' className=''/>
             </div>
